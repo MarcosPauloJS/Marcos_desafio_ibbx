@@ -26,6 +26,11 @@ functions:
     handler: src/handler.main
     timeout: 29
     events:
-      - httpApi:
-          method: GET
-          path: /example
+      - httpApi: 'GET /assets'
+      - httpApi: 'POST /assets'
+      - httpApi: 'DELETE /assets/{id}'
+      - httpApi: 'GET /assets/{assetId}/sensors'
+      - httpApi: 'POST /assets/{assetId}/sensors'
+      - httpApi: 'DELETE /assets/{assetId}/sensors/{sensorId}'
+      - httpApi: 'GET /assets/{assetId}/sensors/{sensorId}'
+      - httpApi: 'POST /assets/{assetId}/sensors/{sensorId}'
