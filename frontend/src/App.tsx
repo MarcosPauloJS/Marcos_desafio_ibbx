@@ -1,19 +1,25 @@
-import styled from 'styled-components';
-import SideBar from './components/sidebar/sidebar'
-import './App.css'
-
+import styled from "styled-components";
+import { RouterProvider } from "react-router-dom";
+import "./App.css";
+import SideBar from "./components/sidebar";
+import { StrictMode } from "react";
+import { router } from "./router";
 export const Main = styled.main`
-   width: 100%;
+  padding-top: 24px;
+  width: 100%;
 `;
 
 function App() {
   return (
     <>
-      <SideBar>
-      </SideBar>
-      <Main></Main>
+      <SideBar></SideBar>
+      <Main>
+        <StrictMode>
+          <RouterProvider router={router} />
+        </StrictMode>
+      </Main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
