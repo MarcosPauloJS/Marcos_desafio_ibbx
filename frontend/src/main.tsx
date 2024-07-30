@@ -21,9 +21,7 @@ const theme = {
     xl: "1200px",
     xxl: "1400px",
   },
-  border: {
-    radius: "10px",
-  },
+  borderRadius: "10px",
 };
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

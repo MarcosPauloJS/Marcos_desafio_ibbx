@@ -1,6 +1,6 @@
 import { FaBars } from "react-icons/fa";
 import styled from "styled-components";
-import { Link as LinkRouter } from "react-router-dom";
+import { NavLink as LinkRouter } from "react-router-dom";
 
 export const Container = styled.div`
   width: 30vw;
@@ -27,6 +27,7 @@ export const Title = styled.h1`
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const Navbar = styled.nav`
@@ -49,6 +50,10 @@ export const Link = styled(LinkRouter)`
   color: ${(props) => props.theme.color.textDark};
 
   &:hover {
+    color: ${(props) => props.theme.color.secondary};
+  }
+
+  &.active {
     color: ${(props) => props.theme.color.secondary};
   }
 

@@ -10,7 +10,7 @@ import {
 } from "./styled";
 import { FaWifi, FaHome, FaBuffer } from "react-icons/fa";
 
-function SideBar() {
+function Sidebar() {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   return (
@@ -42,7 +42,7 @@ function SideBar() {
               <li>
                 <Link to="sensor">
                   <FaBuffer />
-                  Sensores
+                  Sensor
                 </Link>
               </li>
             </NavList>
@@ -53,4 +53,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default Sidebar;

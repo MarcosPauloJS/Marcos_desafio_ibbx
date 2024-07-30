@@ -1,7 +1,14 @@
-import { Container } from "./styled";
+import { Header } from "../../components";
 
 function Home() {
-  return <Container>Home</Container>;
+  return (
+    <>
+      <Header
+        page="Home"
+        addBtn={{ text: "Adicinar novo ativo", action: () => {} }}
+      ></Header>
+    </>
+  );
 }
 
 export default Home;

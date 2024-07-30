@@ -1,7 +1,14 @@
-import { Container } from "./styled";
+import { Header } from "../../components";
 
 function Sensor() {
-  return <Container>Sensor</Container>;
+  return (
+    <>
+      <Header
+        page="Sensor"
+        addBtn={{ text: "Adicinar nova coleta", action: () => {} }}
+      ></Header>
+    </>
+  );
 }
 
 export default Sensor;
