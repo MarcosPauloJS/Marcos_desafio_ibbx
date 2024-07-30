@@ -1,15 +1,18 @@
 import styled from 'styled-components';
+import SideBar from './components/sidebar/sidebar'
 import './App.css'
 
-const Title = styled.h1`
-  font-size: 1.5em;
-  color: ${(props) => props.theme.color.secondary};
+export const Main = styled.main`
+   width: 100%;
 `;
+
 function App() {
   return (
-    <Title>
-      ibbx desafio
-    </Title>
+    <>
+      <SideBar>
+      </SideBar>
+      <Main></Main>
+    </>
   )
 }
 
