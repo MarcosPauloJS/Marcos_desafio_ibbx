@@ -1,7 +1,7 @@
 import { Container } from "./styled";
 
-function Sensor() {
-  return <Container>Sensor</Container>;
+function Ativo() {
+  return <Container>Ativo</Container>;
 }
 
-export default Sensor;
+export default Ativo;

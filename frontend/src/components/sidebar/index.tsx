@@ -5,7 +5,7 @@ import {
   Header,
   Navbar,
   NavList,
-  ListItem,
+  Link,
   Menu,
 } from "./styled";
 import { FaWifi, FaHome, FaBuffer } from "react-icons/fa";
@@ -27,18 +27,24 @@ function SideBar() {
           </Header>
           <Navbar>
             <NavList>
-              <ListItem>
-                <FaHome />
-                Home
-              </ListItem>
-              <ListItem>
-                <FaWifi />
-                Ativo
-              </ListItem>
-              <ListItem>
-                <FaBuffer />
-                Sensores
-              </ListItem>
+              <li>
+                <Link to="home">
+                  <FaHome />
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="ativo">
+                  <FaWifi />
+                  Ativo
+                </Link>
+              </li>
+              <li>
+                <Link to="sensor">
+                  <FaBuffer />
+                  Sensores
+                </Link>
+              </li>
             </NavList>
           </Navbar>
         </Container>

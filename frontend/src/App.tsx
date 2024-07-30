@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { RouterProvider } from "react-router-dom";
 import "./App.css";
 import SideBar from "./components/sidebar";
-import { StrictMode } from "react";
-import { router } from "./router";
+import { AppRoutes } from "./router";
 export const Main = styled.main`
   padding-top: 24px;
   width: 100%;
@@ -14,9 +12,7 @@ function App() {
     <>
       <SideBar></SideBar>
       <Main>
-        <StrictMode>
-          <RouterProvider router={router} />
-        </StrictMode>
+        <AppRoutes />
       </Main>
     </>
   );
