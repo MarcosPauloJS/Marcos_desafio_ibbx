@@ -4,6 +4,7 @@ import { Ativo, Home, Sensor } from "./pages";
 export function AppRoutes() {
   return (
     <Routes>
+      <Route path="/" index element={<Home />} />
       <Route path="home" index element={<Home />} />
       <Route path="ativo" element={<Ativo />} />
       <Route path="sensor" element={<Sensor />} />
