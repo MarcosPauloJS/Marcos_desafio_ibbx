@@ -9,6 +9,7 @@ export const Wapper = styled.div`
   margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: ${(props) => props.theme.color.primary};
   border-radius: ${(props) => props.theme.borderRadius};
   padding: 16px;

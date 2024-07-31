@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Card, Header, Search, WrapperCard } from "../../components";
+import { Card, Header, Modal, Search, WrapperCard } from "../../components";
 import { api } from "../../api";
 
 function Home() {
   const [assets, setAssets] = useState<any>();
   const [filterData, setFilterData] = useState<any>();
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     api.get(`/assets`).then((res) => {
@@ -34,7 +35,12 @@ function Home() {
     <>
       <Header
         page="Home"
-        addBtn={{ text: "Adicinar novo ativo", action: () => {} }}
+        addBtn={{
+          text: "Adicinar novo ativo",
+          action: () => {
+            setModalOpen(true);
+          },
+        }}
       ></Header>
 
       <Search
@@ -43,6 +49,14 @@ function Home() {
           onSearch(value);
         }}
       />
+
+      <Modal
+        title="Cadastro de Ativo"
+        isOpen={modalOpen}
+        setIsOpen={(value: boolean) => setModalOpen(value)}
+      >
+        <p>modal content aqui</p>
+      </Modal>
 
       {filterData && (
         <WrapperCard>

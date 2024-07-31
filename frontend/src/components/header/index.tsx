@@ -11,7 +11,7 @@ function Header({ page, addBtn }: HeaderProps) {
     <HeaderStyled>
       <Title>{page}</Title>
       {addBtn && (
-        <Button onClick={() => addBtn.action()}>
+        <Button onClick={addBtn.action}>
           <FaPlus />
           {addBtn.text}
         </Button>
