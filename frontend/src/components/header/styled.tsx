@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 24px;
 `;
 
 export const Title = styled.h1`
@@ -10,6 +13,9 @@ export const Title = styled.h1`
   line-height: 24px;
   font-weight: bold;
   color: ${(props) => props.theme.color.primary};
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
+    padding-left: 28px;
+  }
 `;
 
 export const Button = styled.button`

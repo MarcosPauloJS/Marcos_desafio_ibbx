@@ -7,19 +7,16 @@ import {
   NavList,
   Link,
   Menu,
+  MenuMobile,
+  ContainerMobile,
 } from "./styled";
 import { FaWifi, FaHome, FaBuffer } from "react-icons/fa";
 
 function Sidebar() {
   const [isOpen, setOpen] = useState<boolean>(false);
-
   return (
     <>
       {isOpen ? (
-        <Container style={{ width: "30px" }}>
-          <Menu onClick={() => setOpen(!isOpen)} />
-        </Container>
-      ) : (
         <Container>
           <Header>
             <Title>Desafio IBBX</Title>
@@ -48,6 +45,14 @@ function Sidebar() {
             </NavList>
           </Navbar>
         </Container>
+      ) : (
+        <>
+          <MenuMobile onClick={() => setOpen(!isOpen)} />
+
+          <ContainerMobile style={{ width: "58px", position: "relative" }}>
+            <Menu onClick={() => setOpen(!isOpen)} />
+          </ContainerMobile>
+        </>
       )}
     </>
   );

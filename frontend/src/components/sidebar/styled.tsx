@@ -9,12 +9,20 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 24px;
+  background-color: #fff;
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
     width: 100vw;
     max-width: none;
     height: 100vh;
     position: absolute;
+  }
+`;
+
+export const ContainerMobile = styled(Container)`
+  display: block;
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
+    display: none;
   }
 `;
 
@@ -65,4 +73,15 @@ export const Link = styled(LinkRouter)`
 
 export const Menu = styled(FaBars)`
   cursor: pointer;
+`;
+
+export const MenuMobile = styled(Menu)`
+  position: absolute;
+  top: 28px;
+  left: 24px;
+  display: none;
+
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
+    display: block;
+  }
 `;

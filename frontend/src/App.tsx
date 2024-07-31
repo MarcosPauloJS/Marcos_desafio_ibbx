@@ -6,6 +6,10 @@ export const Main = styled.main`
   padding-top: 24px;
   padding-right: 24px;
   width: 100%;
+
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
+    padding-left: 24px;
+  }
 `;
 
 function App() {
