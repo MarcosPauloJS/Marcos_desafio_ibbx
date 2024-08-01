@@ -13,7 +13,7 @@ function Search({ describe, searchChange }: SearchProps) {
     debounce((nextValue: any) => {
       searchChange(nextValue);
     }, 1000),
-    [] // será criada apenas uma vez inicialmente
+    []
   );
 
   return (

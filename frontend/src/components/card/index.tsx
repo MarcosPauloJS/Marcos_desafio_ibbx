@@ -9,7 +9,7 @@ interface CardProps {
 
 function Card({ name, id, collectionTotal, children }: CardProps) {
   return (
-    <CardContainer>
+    <CardContainer key={id}>
       <CardItem>Nome: {name}</CardItem>
       <CardItem>ID: {id}</CardItem>
       {collectionTotal && <CardItem>Coletas: {collectionTotal}</CardItem>}

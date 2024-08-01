@@ -6,6 +6,7 @@ export const ModalHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 24px;
+  margin-bottom: 24px;
 `;
 
 export const Title = styled.h3`
