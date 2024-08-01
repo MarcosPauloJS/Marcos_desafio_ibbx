@@ -106,7 +106,7 @@ function Home() {
             />
           </Label>
 
-          <Submit onClick={createAsset}>Search</Submit>
+          <Submit onClick={createAsset}>Cadastrar</Submit>
         </Form>
       </Modal>
 

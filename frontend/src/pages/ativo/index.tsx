@@ -9,6 +9,7 @@ import {
   WrapperCard,
   Form,
   Submit,
+  ButtonCard,
 } from "../../components";
 import { api } from "../../api";
 import { useParams } from "react-router-dom";
@@ -39,6 +40,7 @@ function Ativo() {
         const responseData = Object.entries(res!.data).map((data: any) => ({
           id: data[0],
           name: data[1]?.name,
+          collets: data[1]?.collets,
         }));
         setSensor(responseData);
         setFilterData(responseData);
@@ -88,7 +90,7 @@ function Ativo() {
       ></Header>
       {sensor && (
         <Search
-          describe={`Ativos (${sensor?.length})`}
+          describe={`Sensores (${sensor?.length})`}
           searchChange={onSearch}
         />
       )}
@@ -107,14 +109,24 @@ function Ativo() {
             />
           </Label>
 
-          <Submit onClick={createSensor}>Search</Submit>
+          <Submit onClick={createSensor}>Cadastrar</Submit>
         </Form>
       </Modal>
 
       {filterData && (
         <WrapperCard>
           {filterData.map((data: any) => (
-            <Card name={data.name} id={data.id} key={data.id} />
+            <Card
+              name={data.name}
+              id={data.id}
+              collectionTotal={data?.collets?.length || 0}
+              key={data.id}
+            >
+              <ButtonCard
+                text="Ver Coletas"
+                redirectTo={`../${id}/sensor/${data.id}`}
+              ></ButtonCard>
+            </Card>
           ))}
         </WrapperCard>
       )}

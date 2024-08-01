@@ -12,7 +12,9 @@ function Card({ name, id, collectionTotal, children }: CardProps) {
     <CardContainer key={id}>
       <CardItem>Nome: {name}</CardItem>
       <CardItem>ID: {id}</CardItem>
-      {collectionTotal && <CardItem>Coletas: {collectionTotal}</CardItem>}
+      {collectionTotal !== undefined && (
+        <CardItem>Coletas: {collectionTotal}</CardItem>
+      )}
       {children && <Footer>{children}</Footer>}
     </CardContainer>
   );
