@@ -6,8 +6,8 @@ export function AppRoutes() {
     <Routes>
       <Route path="/" index element={<Home />} />
       <Route path="home" index element={<Home />} />
-      <Route path="ativo" element={<Ativo />} />
-      <Route path="sensor" element={<Sensor />} />
+      <Route path="ativo/:id" element={<Ativo />} />
+      <Route path="sensor/:id" element={<Sensor />} />
     </Routes>
   );
 }
