@@ -5,3 +5,4 @@ export { default as WrapperCard } from "./wrapperCard";
 export { default as Search } from "./search";
 export { default as Modal } from "./modal";
 export { Form, Label, Input, Submit } from "./form";
+export { default as ButtonCard } from "./buttonCard";

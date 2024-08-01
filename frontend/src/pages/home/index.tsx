@@ -9,6 +9,7 @@ import {
   WrapperCard,
   Form,
   Submit,
+  ButtonCard,
 } from "../../components";
 import { api } from "../../api";
 
@@ -112,7 +113,12 @@ function Home() {
       {filterData && (
         <WrapperCard>
           {filterData.map((data: any) => (
-            <Card name={data.name} id={data.id} key={data.id} />
+            <Card name={data.name} id={data.id} key={data.id}>
+              <ButtonCard
+                text="Ver sensores"
+                redirectTo={"/ativo/" + data.id}
+              ></ButtonCard>
+            </Card>
           ))}
         </WrapperCard>
       )}
