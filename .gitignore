@@ -1,1 +1,4 @@
 node_modules
+frontent/node_modules
+serveless/node_modules
+serveless/src/db/ibbx.json
