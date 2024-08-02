@@ -10,7 +10,7 @@ coleta deve ter data, valor e sensorId.
 
 ### Design
 Um prototico foi criado no figma para guiar o desenvolmento do front
-![desafio IBBX imagem do design](https://github.com/MarcosPauloJS/Marcos_desafio_ibbx/ibbx-design.png)
+![desafio IBBX imagem do design](https://github.com/MarcosPauloJS/Marcos_desafio_ibbx/blob/main/ibbx-design.png)
 ### Frontend
 Frontend foi criado com reactjs versão 18 usando vite, styled components para criar todos os componentes e estilizações e por fim a library echarts-for-react uma abstração da library echarts para react
 
