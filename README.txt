@@ -1,5 +1,4 @@
 # Desafio IBBX
-
 O desafio é montar uma aplicação front-end e uma back-end para coletar e
 exibir dados de sensores cadastrados em ativos.
 A aplicação deve ser capaz de cadastrar, listar e deletar ativos, bem como
