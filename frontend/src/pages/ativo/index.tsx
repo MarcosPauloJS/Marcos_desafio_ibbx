@@ -124,7 +124,7 @@ function Ativo() {
             >
               <ButtonCard
                 text="Ver Coletas"
-                redirectTo={`../${id}/sensor/${data.id}`}
+                redirectTo={`../sensor/${id}/${data.id}`}
               ></ButtonCard>
             </Card>
           ))}

@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
-import {
-  Card,
-  Header,
-  Input,
-  Label,
-  Modal,
-  WrapperCard,
-  Form,
-  Submit,
-  ButtonCard,
-} from "../../components";
-import { api } from "../../api";
 import { useParams } from "react-router-dom";
-import { Table } from "./styled";
+import moment from "moment";
+
+import {
+  CardHighlight,
+  Dashboard,
+  Table,
+  CardsWrapper,
+  Echarts,
+} from "./styled";
+import { Header, Input, Label, Modal, Form, Submit } from "../../components";
+import { api } from "../../api";
 
 function Sensor() {
   const [collet, setCollet] = useState<any>();
+  const [lastCollet, setLastCollet] = useState<any>();
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [colletDate, setColletDate] = useState<string>("");
   const [colletValue, setColletValue] = useState<string>("");
@@ -24,6 +23,75 @@ function Sensor() {
   useEffect(() => {
     getCollet();
   }, []);
+
+  const dateList = collet?.map(function (item: any) {
+    return moment(item.date).toString();
+  });
+  const valueList = collet?.map(function (item: any) {
+    return item.value;
+  });
+
+  const option = {
+    color: ["#BD783C"],
+    title: {
+      text: "Sensor Coleta de Dados",
+      left: "left",
+      textStyle: {
+        color: "#FFF",
+      },
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {
+          pixelRatio: 2,
+          iconStyle: { borderColor: "#FFF" },
+        },
+      },
+    },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "shadow",
+      },
+    },
+    dataZoom: [
+      {
+        type: "inside",
+      },
+    ],
+    xAxis: {
+      data: dateList,
+      silent: false,
+      splitLine: {
+        show: false,
+      },
+      axisLabel: {
+        textStyle: {
+          color: "#FFF",
+        },
+      },
+    },
+    yAxis: {
+      gridLines: {
+        zeroLineColor: "red",
+      },
+      splitArea: {
+        show: false,
+      },
+      axisLabel: {
+        textStyle: {
+          color: "#FFF",
+        },
+      },
+    },
+    series: [
+      {
+        type: "bar",
+        data: valueList,
+        large: true,
+      },
+    ],
+  };
 
   const getCollet = () => {
     api
@@ -35,8 +103,16 @@ function Sensor() {
         if (!res?.data) {
           setCollet([]);
         }
-        setCollet(res!.data);
+        const ascendingOrder = res!.data.sort((dateA: any, dateB: any) => {
+          return moment(dateA.date).diff(moment(dateB.date));
+        });
+        setLastCollet(ascendingOrder[ascendingOrder.length - 1]);
+        setCollet(ascendingOrder);
       });
+  };
+
+  const formatDate = (date: string): string => {
+    return moment(date).format("DD/MM/YYYY");
   };
 
   const createSensor = (event: any) => {
@@ -63,6 +139,23 @@ function Sensor() {
           },
         }}
       ></Header>
+
+      {collet && (
+        <Dashboard>
+          <CardsWrapper>
+            <CardHighlight>
+              <span>Total de Coletas</span>
+              <span>{collet?.length}</span>
+            </CardHighlight>
+            <CardHighlight>
+              <span>Ultimo coleta - {formatDate(lastCollet?.date)}</span>
+              <span>{lastCollet?.value}</span>
+            </CardHighlight>
+          </CardsWrapper>
+          <Echarts option={option} />
+        </Dashboard>
+      )}
+
       <Modal
         title="Cadastro de Ativo"
         isOpen={modalOpen}
@@ -101,7 +194,7 @@ function Sensor() {
           {collet &&
             collet.map((data: any) => (
               <tr>
-                <td>{data.date}</td>
+                <td>{formatDate(data.date)}</td>
                 <td>{data.value}</td>
               </tr>
             ))}
