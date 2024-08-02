@@ -3,45 +3,64 @@ module.exports.main = async (event) => {
 
   let response = { statusCode: 404 };
 
-  if (route === "/assets" && method === "GET") {
-    const { getAssets } = require("./functions/assets");
-    response = await getAssets();
-  }
-
-  if (route === "/assets" && method === "POST") {
-    const { postAssets } = require("./functions/assets");
+  if (RegExp(/assets$/).test(route)) {
+    switch (method) {
+      case 'GET':
+        const { getAssets } = require("./functions/assets");
+        response = await getAssets();
+        break;
+      case 'POST':
+        const { postAssets } = require("./functions/assets");
     response = await postAssets(event);
+        break;
+      default:
+        break;
+    }
   }
 
-  if (route.includes("/assets") && method === "DELETE") {
-    const { deleteAssets } = require("./functions/assets");
-    response = await deleteAssets(event);
+  if (RegExp(/assets\/[0-9A-Za-z-]{0,}$/).test(route)) {
+    switch (method) {
+      case 'DELETE':
+        const { deleteAssets } = require("./functions/assets");
+        response = await deleteAssets(event);
+        break;
+    
+      default:
+        break;
+    }
+  }
+  if (RegExp(/sensors$/).test(route)) {
+    switch (method) {
+      case 'GET':
+        const { getSensors } = require("./functions/sensors");
+        response = await getSensors(event);
+        break;
+      case 'POST':
+        const { postSensors } = require("./functions/sensors");
+        response = await postSensors(event);
+        break;
+      default:
+        break;
+    }
   }
 
-  if (RegExp(/sensors$/).test(route) && method === "GET") {
-    const { getSensors } = require("./functions/sensors");
-    response = await getSensors(event);
-  }
-
-  if (RegExp(/sensors$/).test(route) && method === "POST") {
-    const { postSensors } = require("./functions/sensors");
-    response = await postSensors(event);
-  }
-
-  if (RegExp(/sensors\/.{0,}/).test(route) && method === "DELETE") {
-    const { deleteSensors } = require("./functions/sensors");
-    response = await deleteSensors(event);
-  }
-
-  if (RegExp(/sensors\/.{0,}/).test(route) && method === "GET") {
-    const { getCollets } = require("./functions/collets");
+  if (RegExp(/sensors\/[0-9A-Za-z-]{0,}/).test(route)) {
+    switch (method) {
+      case 'GET':
+        const { getCollets } = require("./functions/collets");
     response = await getCollets(event);
-  }
-
-  if (RegExp(/sensors\/.{0,}/).test(route) && method === "POST") {
-    const { postCollets } = require("./functions/collets");
+        break;
+      case 'POST':
+        const { postCollets } = require("./functions/collets");
     response = await postCollets(event);
+        break;
+      case 'DELETE':
+        const { deleteSensors } = require("./functions/sensors");
+        response = await deleteSensors(event);
+        break;
+      default:
+        break;
+    }
   }
-
   return response;
 };
